@@ -1,0 +1,35 @@
+flowchart TD
+    Start([Início - Processo no SGA]) --> B1[Verificar Processo<br/>cobertura, adesão, pagamentos, histórico]
+    B1 --> B2[Conferência Inicial ≤ 2h<br/>SGA + Visto]
+    B2 --> B3{Amparo OK?}
+    B3 -->|Não| B4[Registrar Negativa na aba análise]
+    B4 --> B5[Informar atendente via Discord]
+    B5 --> End1([Fim - Processo Negado])
+    
+    B3 -->|Sim| B6{Complexidade?}
+    B6 -->|Simples| B7[Registrar Amparo na aba análise]
+    B6 -->|Complexa| B8[Encaminhar para Jurídico/Coordenação]
+    
+    B7 --> B9[Alterar situação para cada andamento]
+    B8 --> B10[Aguardar retorno Jurídico/Coordenação]
+    B10 --> B11[Registrar parecer final]
+    
+    B9 --> B12[Sincronizar com Gestão Segura]
+    B11 --> B12
+    
+    B12 --> B13[Aguardar retorno 3 dias]
+    B13 --> B14[Analisar proposta no Cilia]
+    B14 --> B15{Proposta OK?}
+    B15 -->|Não| B16[Negociar com oficina]
+    B16 --> B14
+    B15 -->|Sim| B17[Emitir termo de quitação Clicksign]
+    B17 --> B18[Atualizar status: AUTORIZADO REPAROS]
+    B18 --> End2([Fim - Processo Autorizado])
+    
+    style Start fill:#4ade80
+    style End1 fill:#ef4444
+    style End2 fill:#4ade80
+    style B3 fill:#fbbf24
+    style B6 fill:#fbbf24
+    style B15 fill:#fbbf24
+    style B18 fill:#60a5fa

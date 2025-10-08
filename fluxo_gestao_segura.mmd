@@ -1,0 +1,24 @@
+flowchart TD
+    Start([Início - Envio para Gestão Segura]) --> C1[Sincronizar processo no SGA<br/>histórico de registro]
+    C1 --> C2[Informar prazo de retorno no SGA]
+    C2 --> C3[Comunicação via webmail e WhatsApp<br/>Movimento + BR & Gestão Segura]
+    C3 --> C4[Gestão Segura: Orçamentação<br/>Prazo: 3 dias]
+    C4 --> C5[Acompanhamento na esteira do sistema]
+    C5 --> C6{Retorno<br/>no prazo?}
+    C6 -->|Não| C7[Cobrança no grupo WhatsApp]
+    C7 --> C5
+    C6 -->|Sim| C8[Retorno via WhatsApp<br/>documentação conferida + data prevista]
+    C8 --> C9[Registrar andamento no SGA<br/>aba análise ou histórico]
+    C9 --> C10{Proposta<br/>aceita?}
+    C10 -->|Não| C11[Negociar com oficina via e-mail]
+    C11 --> C4
+    C10 -->|Sim| C12[Analisar/levantar custos no Cilia]
+    C12 --> C13[Autorização de reparos]
+    C13 --> C14[Alterar status: REPAROS AUTORIZADOS]
+    C14 --> End([Fim - Retornar ao SGA])
+    
+    style Start fill:#4ade80
+    style End fill:#4ade80
+    style C6 fill:#fbbf24
+    style C10 fill:#fbbf24
+    style C14 fill:#60a5fa

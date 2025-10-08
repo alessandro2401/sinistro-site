@@ -1,0 +1,22 @@
+flowchart TD
+    Start([Início - Análise no Cilia]) --> A1[Acesso à Tela de Fluxo de Orçamentos]
+    A1 --> A2[Consultar Orçamentos<br/>por sinistro, orçamento, placa ou cliente]
+    A2 --> A3[Baixar Relatório do Orçamento em PDF]
+    A3 --> A4{Perito/Analista<br/>correto?}
+    A4 -->|Não| A5[Atribuir/Reatribuir Perito ou Analista]
+    A5 --> A6[Voltar para análise]
+    A4 -->|Sim| A6
+    A6 --> A7[Distribuir Orçamento]
+    A7 --> A8[Incluir Fotos do Visto]
+    A8 --> A9[Módulo de Consulta de Peças]
+    A9 --> A10{Coerência técnica?}
+    A10 -->|Não| A11[Solicitar Correções]
+    A11 --> A6
+    A10 -->|Sim| A12[Cadastrar Parecer Técnico]
+    A12 --> End([Fim - Retornar ao SGA])
+    
+    style Start fill:#4ade80
+    style End fill:#4ade80
+    style A4 fill:#fbbf24
+    style A10 fill:#fbbf24
+    style A12 fill:#60a5fa
