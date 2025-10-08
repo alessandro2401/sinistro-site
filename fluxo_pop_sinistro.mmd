@@ -1,0 +1,94 @@
+flowchart TB
+    subgraph Atendimento["🎧 ATENDIMENTO"]
+        A1[Recepção do Evento<br/>Sinistro/SMT/Vidro/Carro Reserva]
+        A2[Registro no Discord<br/>Canal oficial]
+        A3[Protocolo no SGA<br/>Sistema de Gestão]
+        style A1 fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+        style A2 fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+        style A3 fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    end
+    
+    subgraph Analista["📋 ANALISTA DE REGULAGEM"]
+        B1[Card Trello<br/>Organização de demandas]
+        B2[Triagem ≤ 2h<br/>Análise inicial]
+        B3[Análise Técnica no Cilia<br/>Validação de orçamentos]
+        B4[Parecer no SGA<br/>Documentação técnica]
+        style B1 fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+        style B2 fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+        style B3 fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+        style B4 fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    end
+    
+    subgraph Supervisor["👔 SUPERVISOR"]
+        C1[Revisão Técnica<br/>Validação do parecer]
+        C2[Validação de Orçamento<br/>Conferência de valores]
+        C3{Necessita<br/>Jurídico?}
+        style C1 fill:#e8f5e9,stroke:#4caf50,stroke-width:2px
+        style C2 fill:#e8f5e9,stroke:#4caf50,stroke-width:2px
+        style C3 fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
+    end
+    
+    subgraph Juridico["⚖️ JURÍDICO"]
+        E1[Parecer/Notificação<br/>Análise legal]
+        E2[Retorno ao SGA<br/>Prazo: 48h]
+        style E1 fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
+        style E2 fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
+    end
+    
+    subgraph Coordenacao["🎯 COORDENAÇÃO"]
+        D1[Decisão e Autorização<br/>Aprovação final]
+        D2[Envio para Assinatura<br/>Clicksign]
+        D3[Atualização Status SGA<br/>Registro de decisão]
+        D4{Caso<br/>Crítico?}
+        style D1 fill:#e1f5fe,stroke:#0277bd,stroke-width:2px
+        style D2 fill:#e1f5fe,stroke:#0277bd,stroke-width:2px
+        style D3 fill:#e1f5fe,stroke:#0277bd,stroke-width:2px
+        style D4 fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
+    end
+    
+    subgraph Diretoria["👨‍💼 DIRETORIA"]
+        G1[Deliberação<br/>Casos Críticos]
+        style G1 fill:#ffebee,stroke:#c62828,stroke-width:2px
+    end
+    
+    subgraph Financeiro["💰 FINANCEIRO"]
+        F1[Programação de Pagamento<br/>Prazo: 24h úteis]
+        F2[Confirmação ao SGA<br/>Registro de pagamento]
+        style F1 fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
+        style F2 fill:#e8eaf6,stroke:#3f51b5,stroke-width:2px
+    end
+    
+    Fim([✅ PROCESSO ENCERRADO])
+    style Fim fill:#4caf50,stroke:#2e7d32,stroke-width:3px,color:#fff
+    
+    A1 --> A2
+    A2 --> A3
+    A3 --> B1
+    B1 --> B2
+    B2 --> B3
+    B3 --> B4
+    B4 --> C1
+    C1 --> C2
+    C2 --> C3
+    
+    C3 -->|Sim| E1
+    E1 --> E2
+    E2 --> D1
+    
+    C3 -->|Não| D1
+    
+    D1 --> D4
+    D4 -->|Sim| G1
+    G1 --> D2
+    D4 -->|Não| D2
+    
+    D2 --> D3
+    D3 --> F1
+    F1 --> F2
+    F2 --> Fim
+    
+    Note1[⏱️ Meta TMAI: 2h<br/>Tempo Médio de Análise Inicial]
+    style Note1 fill:#fffde7,stroke:#f57f17,stroke-width:1px,stroke-dasharray: 5 5
+    
+    Note2[⏱️ Meta TMAR: 72h<br/>Tempo Médio até Autorização]
+    style Note2 fill:#fffde7,stroke:#f57f17,stroke-width:1px,stroke-dasharray: 5 5

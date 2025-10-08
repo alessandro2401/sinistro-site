@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="POP - Departamento de Evento e Sinistro - Grupo MMB">
+    <title>POP Evento e Sinistro | Grupo MMB</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <h1 class="logo-text">GRUPO MMB</h1>
+                    <p class="logo-subtitle">Administradora Mutual</p>
+                </div>
+                <nav class="nav">
+                    <a href="#inicio" class="nav-link">Início</a>
+                    <a href="#fluxo" class="nav-link">Fluxo</a>
+                    <a href="#kpis" class="nav-link">KPIs</a>
+                    <a href="#processos" class="nav-link">Processos</a>
+                    <a href="#auditoria" class="nav-link">Auditoria</a>
+                    <a href="#documentacao" class="nav-link">Documentação</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">POP - Departamento de Evento e Sinistro</h1>
+                <p class="hero-subtitle">Procedimento Operacional Padrão | Versão 2.0 - Outubro/2025</p>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">⏱️</div>
+                        <div class="stat-value" id="stat-tmai">2.0h</div>
+                        <div class="stat-label">Meta TMAI</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-value" id="stat-tmar">72h</div>
+                        <div class="stat-label">Meta TMAR</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-value" id="stat-conformidade">100%</div>
+                        <div class="stat-label">Conformidade Doc</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🔄</div>
+                        <div class="stat-value" id="stat-retrabalho">≤5%</div>
+                        <div class="stat-label">Meta Retrabalho</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fluxo Section -->
+    <section id="fluxo" class="section">
+        <div class="container">
+            <h2 class="section-title">Fluxo Operacional</h2>
+            <p class="section-description">Fluxograma completo do processo de tratamento de eventos e sinistros, desde o recebimento até o encerramento.</p>
+            
+            <div class="diagram-container">
+                <img src="images/fluxo_pop_sinistro.png" alt="Fluxograma POP Evento e Sinistro" class="diagram-image">
+            </div>
+
+            <div class="flow-legend">
+                <h3 class="legend-title">Legenda dos Departamentos</h3>
+                <div class="legend-grid">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #e3f2fd;"></div>
+                        <span>🎧 Atendimento</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #fff3e0;"></div>
+                        <span>📋 Analista de Regulagem</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #e8f5e9;"></div>
+                        <span>👔 Supervisor</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #e1f5fe;"></div>
+                        <span>🎯 Coordenação</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #f3e5f5;"></div>
+                        <span>⚖️ Jurídico</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #e8eaf6;"></div>
+                        <span>💰 Financeiro</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #ffebee;"></div>
+                        <span>👨‍💼 Diretoria</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KPIs Section -->
+    <section id="kpis" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Indicadores de Desempenho (KPIs)</h2>
+            <p class="section-description">Monitoramento em tempo real dos principais indicadores operacionais do departamento.</p>
+            
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <h3 class="kpi-title">TMAI - Tempo Médio de Análise Inicial</h3>
+                        <span class="kpi-status status-ok">OK</span>
+                    </div>
+                    <div class="kpi-body">
+                        <div class="kpi-value">1.8 <span class="kpi-unit">horas</span></div>
+                        <div class="kpi-meta">Meta: ≤ 2.0 horas</div>
+                        <div class="kpi-chart-container">
+                            <canvas id="chart-tmai"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <h3 class="kpi-title">TMAR - Tempo Médio até Autorização</h3>
+                        <span class="kpi-status status-ok">OK</span>
+                    </div>
+                    <div class="kpi-body">
+                        <div class="kpi-value">68.5 <span class="kpi-unit">horas</span></div>
+                        <div class="kpi-meta">Meta: ≤ 72.0 horas</div>
+                        <div class="kpi-chart-container">
+                            <canvas id="chart-tmar"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <h3 class="kpi-title">Taxa de Retrabalho</h3>
+                        <span class="kpi-status status-ok">OK</span>
+                    </div>
+                    <div class="kpi-body">
+                        <div class="kpi-value">3.2 <span class="kpi-unit">%</span></div>
+                        <div class="kpi-meta">Meta: ≤ 5.0%</div>
+                        <div class="kpi-chart-container">
+                            <canvas id="chart-retrabalho"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <h3 class="kpi-title">Conformidade Documental</h3>
+                        <span class="kpi-status status-ok">OK</span>
+                    </div>
+                    <div class="kpi-body">
+                        <div class="kpi-value">98.5 <span class="kpi-unit">%</span></div>
+                        <div class="kpi-meta">Meta: 100%</div>
+                        <div class="kpi-chart-container">
+                            <canvas id="chart-conformidade"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <h3 class="kpi-title">Prazo SMT</h3>
+                        <span class="kpi-status status-ok">OK</span>
+                    </div>
+                    <div class="kpi-body">
+                        <div class="kpi-value">96.8 <span class="kpi-unit">%</span></div>
+                        <div class="kpi-meta">Meta: ≥ 95.0%</div>
+                        <div class="kpi-chart-container">
+                            <canvas id="chart-prazo-smt"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <h3 class="kpi-title">Resposta Financeiro</h3>
+                        <span class="kpi-status status-ok">OK</span>
+                    </div>
+                    <div class="kpi-body">
+                        <div class="kpi-value">18.2 <span class="kpi-unit">horas</span></div>
+                        <div class="kpi-meta">Meta: ≤ 24.0 horas</div>
+                        <div class="kpi-chart-container">
+                            <canvas id="chart-resp-fin"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Processos Section -->
+    <section id="processos" class="section">
+        <div class="container">
+            <h2 class="section-title">Processos Recentes</h2>
+            <p class="section-description">Amostra dos últimos processos tratados pelo departamento.</p>
+            
+            <div class="table-container">
+                <table class="data-table" id="processos-table">
+                    <thead>
+                        <tr>
+                            <th>Processo</th>
+                            <th>Placa</th>
+                            <th>Tipo</th>
+                            <th>Status</th>
+                            <th>Recebimento</th>
+                            <th>Análise Inicial</th>
+                            <th>Autorização</th>
+                            <th>TMAI (h)</th>
+                            <th>TMAR (h)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="processos-tbody">
+                        <!-- Será preenchido via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Auditoria Section -->
+    <section id="auditoria" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Auditoria Mensal</h2>
+            <p class="section-description">Checklist de conformidade e índice de auditoria do mês corrente.</p>
+            
+            <div class="audit-summary">
+                <div class="audit-score">
+                    <div class="score-circle">
+                        <svg viewBox="0 0 100 100" class="score-svg">
+                            <circle cx="50" cy="50" r="45" class="score-bg"></circle>
+                            <circle cx="50" cy="50" r="45" class="score-fill" style="stroke-dasharray: 282.7; stroke-dashoffset: 28.27;"></circle>
+                        </svg>
+                        <div class="score-text">
+                            <span class="score-value">100%</span>
+                            <span class="score-label">Conformidade</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="audit-details">
+                    <h3 class="audit-title">Checklist de Auditoria</h3>
+                    <div class="checklist" id="checklist-container">
+                        <!-- Será preenchido via JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documentação Section -->
+    <section id="documentacao" class="section">
+        <div class="container">
+            <h2 class="section-title">Documentação</h2>
+            <p class="section-description">Documentos, manuais e procedimentos relacionados ao POP.</p>
+            
+            <div class="docs-grid">
+                <div class="doc-card">
+                    <div class="doc-icon">📄</div>
+                    <h3 class="doc-title">POP Completo</h3>
+                    <p class="doc-description">Documento completo do Procedimento Operacional Padrão do Departamento de Evento e Sinistro.</p>
+                    <a href="#" class="doc-link">Download PDF →</a>
+                </div>
+                <div class="doc-card">
+                    <div class="doc-icon">📊</div>
+                    <h3 class="doc-title">Relatório de KPIs</h3>
+                    <p class="doc-description">Relatório mensal com análise detalhada dos indicadores de desempenho.</p>
+                    <a href="#" class="doc-link">Download PDF →</a>
+                </div>
+                <div class="doc-card">
+                    <div class="doc-icon">✅</div>
+                    <h3 class="doc-title">Checklist de Auditoria</h3>
+                    <p class="doc-description">Formulário de auditoria mensal para verificação de conformidade.</p>
+                    <a href="#" class="doc-link">Download PDF →</a>
+                </div>
+                <div class="doc-card">
+                    <div class="doc-icon">🎓</div>
+                    <h3 class="doc-title">Manual de Treinamento</h3>
+                    <p class="doc-description">Material de treinamento e reciclagem trimestral para colaboradores.</p>
+                    <a href="#" class="doc-link">Download PDF →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">Grupo MMB</h3>
+                    <p class="footer-text">Administradora Mutual de Proteção Patrimonial</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Contato</h3>
+                    <p class="footer-text">Coordenação de Processos e Compliance</p>
+                    <p class="footer-text">Departamento de Evento e Sinistro</p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Versão</h3>
+                    <p class="footer-text">POP v2.0 - Outubro/2025</p>
+                    <p class="footer-text">Última atualização: 08/10/2025</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Grupo MMB. Todos os direitos reservados. | Documento de uso interno.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
