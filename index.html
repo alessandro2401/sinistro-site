@@ -530,10 +530,19 @@
         </div>
     </footer>
 
-    <!-- Autenticação removida - Acesso livre -->
+    
     
     <script src="js/data.js"></script>
     <script src="js/charts.js"></script>
     <script src="js/main.js"></script>
+
+    <script src="auth.js"></script>
+    <script>
+        // Proteção de acesso - redireciona para login se não autenticado
+        if (!authManager.protectPage()) {
+            // Será redirecionado para login.html
+        }
+    </script>
+
 </body>
 </html>
